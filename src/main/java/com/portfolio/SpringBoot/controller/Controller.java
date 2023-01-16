@@ -2,10 +2,12 @@ package com.portfolio.SpringBoot.Controller;
 
 import com.portfolio.SpringBoot.model.Educacion;
 import com.portfolio.SpringBoot.model.ExperienciaLaboral;
+import com.portfolio.SpringBoot.model.Login;
 import com.portfolio.SpringBoot.model.Persona;
 import com.portfolio.SpringBoot.model.TipoEmpleo;
 import com.portfolio.SpringBoot.service.IEducacionService;
 import com.portfolio.SpringBoot.service.IExperienciaLaboralService;
+import com.portfolio.SpringBoot.service.ILoginService;
 import com.portfolio.SpringBoot.service.IPersonaService;
 import com.portfolio.SpringBoot.service.ITipoEmpleoService;
 import java.util.List;
@@ -33,6 +35,13 @@ public class Controller {
     @Autowired
     private ITipoEmpleoService tipoServ;
     
+    @Autowired
+    private ILoginService login;
+    
+    @GetMapping("/auth/login")
+    public List<Login> login(){
+        return login.verLogins();
+    }
     
     @PostMapping("/new/persona")
     public void agregarPersona (@RequestBody Persona pers){
